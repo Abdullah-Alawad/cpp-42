@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <cstdlib>
 
 #define RED     "\033[1;31m"
 #define GREEN   "\033[1;32m"
@@ -40,8 +41,9 @@ class PhoneBook
 	public:
 		PhoneBook();
 		void addContact(Contact newOne);
-		void getContacts();
 		void display();
+		void displayEntry(int entries);
+		int countEntries();
 };
 
 #endif

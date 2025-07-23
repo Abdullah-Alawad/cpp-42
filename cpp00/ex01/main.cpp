@@ -23,7 +23,16 @@ int main()
 		}
 		if (command.compare("SEARCH") == 0)
 		{
-			myBook.display();
+			int entries = myBook.countEntries();
+			if (entries == -1)
+			{
+				std::cout<< RED << "Phone Book is Empty, add books to review them..." << RESET << std::endl;
+			}
+			else
+			{
+				myBook.display();
+				myBook.displayEntry(entries);
+			}		
 		}
 	}
 }

@@ -11,16 +11,11 @@ Contact::Contact()
 
 void Contact::getValues()
 {
-	if (!firstName.empty())
-		std::cout << firstName << std::endl;
-	if (!lastName.empty())
-		std::cout << lastName << std::endl;
-	if (!nickname.empty())
-		std::cout << nickname << std::endl;
-	if (!phoneNumber.empty())
-		std::cout << phoneNumber << std::endl;
-	if (!darkSecret.empty())
-		std::cout << darkSecret << std::endl;
+	std::cout << YELLOW << "first name:   " << RESET <<firstName << std::endl;
+	std::cout << YELLOW << "last name:    " << RESET << lastName << std::endl;
+	std::cout << YELLOW << "nickname:     " << RESET << nickname << std::endl;
+	std::cout << YELLOW <<"phone number: " << RESET << phoneNumber << std::endl;
+	std::cout << YELLOW <<"dark secret:  " << RESET << darkSecret << std::endl;
 }
 
 std::string Contact::getNickname()
@@ -133,17 +128,6 @@ PhoneBook::PhoneBook()
 	oldest = -1;
 }
 
-void PhoneBook::getContacts()
-{
-	for(int i = 0; i < 8; i++)
-	{
-		std::cout << "-----------------" << std::endl;
-		if (!contacts[i].isEmpty())
-			contacts[i].getValues();
-		std::cout << "-----------------" << std::endl;
-	}
-}
-
 std::string formatString(std::string str)
 {
 	if (str.length() > 10)
@@ -167,4 +151,40 @@ void PhoneBook::display()
 			std::cout<< std::right << std::setw(10)<< formatString(contacts[i].getNickname()) << "|" << RESET << std::endl;
 		}
 	}
+}
+
+int PhoneBook::countEntries()
+{
+	int len = 0;
+
+	if (contacts[0].isEmpty())
+		return (-1);
+	for (int i = 0; i < 8; i++)
+	{
+		if (contacts[i].isEmpty())
+			break ;
+		len++;
+	}
+	return (len - 1);
+}
+
+void PhoneBook::displayEntry(int entries)
+{
+	std::string entry;
+
+	entry = "";
+	std::cout << "Enter index entry: ";
+	std::getline(std::cin, entry);
+	while (entry.empty())
+	{
+		std::cout << "Enter index entry: ";
+		std::getline(std::cin, entry);
+	}
+	while (entry.length() != 1 || atoi(entry.c_str()) > entries || atoi(entry.c_str()) < 0)
+	{
+		std::cout << RED << "Invalid Input Entry..." << RESET << std::endl;
+		std::cout << "Enter index entry: ";
+		std::getline(std::cin, entry);
+	}
+	contacts[atoi(entry.c_str())].getValues();
 }
