@@ -144,9 +144,16 @@ void PhoneBook::getContacts()
 	}
 }
 
+std::string formatString(std::string str)
+{
+	if (str.length() > 10)
+		return (str.substr(0, 9) + ".");
+		//continjklfdjg;lf
+}
+
 void PhoneBook::display()
 {
-	std::cout<< YELLOW << std::right << std::setw(10) << "|    index|";
+	std::cout<< YELLOW << std::right << std::setw(10) << "|  index|  ";
 	std::cout<< std::right << std::setw(10) << "first name|";
 	std::cout<< std::right << std::setw(10) << "last name|";
 	std::cout<< std::right << std::setw(10) << "nickname|" << RESET << std::endl;
@@ -154,7 +161,7 @@ void PhoneBook::display()
 	{
 		if (!contacts[i].isEmpty())
 		{
-			std::cout<< BLUE << std::right  << "|      "<< i << "|";
+			std::cout<< GREEN << std::right  << "|      "<< i << "|";
 			std::cout<< std::right << std::setw(10) << contacts[i].getFirstName() << "|";
 			std::cout<< std::right << std::setw(10) << contacts[i].getLastName() << "|";
 			std::cout<< std::right << std::setw(10)<< contacts[i].getNickname() << "|" << RESET << std::endl;
