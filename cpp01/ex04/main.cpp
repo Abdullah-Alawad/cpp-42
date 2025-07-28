@@ -9,9 +9,6 @@ int main(int ac, char *av[])
 		std::cerr << "MUST INCLUDE 3 ARGUMENTS, file, s1, and s2" << std::endl;
 		return (1);
 	}
-
-	std::string line;
-	std::string fullFile;
 	std::ifstream inputFile;
 	size_t spos;
 	size_t epos;
@@ -22,10 +19,25 @@ int main(int ac, char *av[])
 	}
 	else
 	{
-		while (getline(inputFile, line))
+		inputFile.seekg(0, std::ios::end);
+		std::streamsize size = inputFile.tellg();
+		inputFile.seekg(0, std::ios::beg);
+		char *buffer = new char[size];
+		if (!buffer)
 		{
-			fullFile = fullFile + line + "\n";
+			std::cerr << "malloc failed..." << std::endl;
+			inputFile.close();
+			return (1);
 		}
+		if (!inputFile.read(buffer, size))
+		{
+			std::cerr << "read Failed!" << std::endl;
+			delete[] buffer;
+			inputFile.close();
+			return (1);
+		}
+		std::string fullFile(buffer, size);
+		delete[] buffer;
 		inputFile.close();
 		std::string target(av[2]);
 		std::string goal(av[3]);
