@@ -46,9 +46,9 @@ int main(int ac, char *av[])
 		{
 			epos = spos + target.length();
 			fullFile = fullFile.substr(0, spos) + goal + fullFile.substr(epos, fullFile.length() - 1);
-			spos = fullFile.find(target);
+			spos = fullFile.find(target, epos);
 		}
-		std::cout << fullFile << std::endl;
+		// std::cout << fullFile << std::endl;
 		std::ofstream outputFile;
 		outputFile.open("result.txt", std::ios::out);
 		if (!outputFile.is_open())
