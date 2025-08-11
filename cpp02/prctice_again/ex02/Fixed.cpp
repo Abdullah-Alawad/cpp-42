@@ -8,28 +8,28 @@ Fixed::Fixed()
 	value = 0;
 }
 
-Fixed::Fixed(const Fixed &copy)
+Fixed::Fixed(const Fixed &other)
 {
 	//std::cout << "Copy constructor called" << std::endl;
-	value = copy.value;
+	value = other.value;
 }
 
-Fixed &Fixed::operator=(const Fixed &n)
+Fixed &Fixed::operator=(const Fixed &other)
 {
-	//std::cout << "Copy assignment operator called" << std::endl;
-	if (this != &n)
-		this->value = n.value;
+	//std::cout << "Copy assignment constructor called" << std::endl;
+	if (this != &other)
+		this->value = other.value;
 	return (*this);
 }
 
 Fixed::~Fixed()
 {
-	//std::cout << "Destructer called" << std::endl;
+	std::cout << "Destructer called" << std::endl;
 }
 
 int Fixed::getRawBits(void)
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	//std::cout << "getRawBits member function called" << std::endl;
 	return (value);
 }
 
@@ -41,13 +41,11 @@ void Fixed::setRawBits(int const raw)
 
 Fixed::Fixed(const int &num)
 {
-	//std::cout << "Int constructor called" << std::endl;
 	value = roundf(num * (1 << fraction));
 }
 
 Fixed::Fixed(const float &num)
 {
-	//std::cout << "float constructor called" << std::endl;
 	value = roundf(num * (1 << fraction));
 }
 
@@ -61,7 +59,6 @@ int Fixed::toInt(void) const
 	return (value / (1 << fraction));
 }
 
-
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
 {
 	out << fixed.toFloat();
@@ -70,16 +67,14 @@ std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
 
 bool Fixed::operator>(const Fixed &n) const
 {
-	if (value > n.value)
-		return (true);
-	return (false);
+	return (value > n.value);
 }
 
 bool Fixed::operator<(const Fixed &n) const
 {
 	return (value < n.value);
 }
-		
+
 bool Fixed::operator>=(const Fixed &n) const
 {
 	return (value >= n.value);
@@ -94,18 +89,18 @@ bool Fixed::operator!=(const Fixed &n) const
 {
 	return (value != n.value);
 }
-
+		
 Fixed Fixed::operator+(const Fixed &n) const
 {
 	Fixed res;
-	res.value = ((value) + (n.value)) >> fraction;
+	res.value = ((value / 256) + (n.value / 256)) * 256;
 	return (res);
 }
 		
 Fixed Fixed::operator-(const Fixed &n) const
 {
 	Fixed res;
-	res.value = ((value) - (n.value)) >> fraction;
+	res.value = ((value / 256) - (n.value / 256)) * 256;
 	return (res);
 }
 		
@@ -119,11 +114,11 @@ Fixed Fixed::operator*(const Fixed &n) const
 Fixed Fixed::operator/(const Fixed &n) const
 {
 	Fixed res;
-	res.value = ((value) / (n.value)) >> fraction;
+	res.value = ((value / 256) / (n.value / 256)) >> fraction;
 	return (res);
 }
-
-Fixed &Fixed::operator++()	// pre
+		
+Fixed &Fixed::operator++() // pre
 {
 	value += 1;
 	return (*this);
@@ -131,9 +126,9 @@ Fixed &Fixed::operator++()	// pre
 		
 Fixed Fixed::operator++(int)	// post
 {
-	Fixed ret(*this);
+	Fixed res(*this);
 	value += 1;
-	return (ret);
+	return (res);
 }
 		
 Fixed &Fixed::operator--()	// pre
@@ -144,26 +139,26 @@ Fixed &Fixed::operator--()	// pre
 		
 Fixed Fixed::operator--(int)	// post
 {
-	Fixed ret(*this);
+	Fixed res(*this);
 	value -= 1;
-	return (ret);
+	return (res);
 }
-
+	
 Fixed &Fixed::min(Fixed &one, Fixed &two)
 {
 	return (one.value < two.value? one : two);
 }
-
+		
 const Fixed &Fixed::min(const Fixed &one, const Fixed &two)
 {
 	return (one.value < two.value? one : two);
 }
-		
+
 Fixed &Fixed::max(Fixed &one, Fixed &two)
 {
 	return (one.value > two.value? one : two);
 }
-		
+
 const Fixed &Fixed::max(const Fixed &one, const Fixed &two)
 {
 	return (one.value > two.value? one : two);
