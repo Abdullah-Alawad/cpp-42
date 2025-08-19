@@ -15,5 +15,7 @@ int main( void ) {
 	std::cout << "----------------------------------" << std::endl;
 	if (c == d)
 		std::cout << "c and d are equal" << std::endl;
+	Fixed n = Fixed(10) / Fixed(2.5f);
+	std::cout << n << std::endl;
 	return (0);
 }

@@ -2,7 +2,7 @@
 
 Fixed getArea(Point const a, Point const b, Point const c)
 {
-	int val = std::abs(a.getX().getRawBits() * (b.getY().getRawBits() - c.getY().getRawBits())
+	int val =	std::abs(a.getX().getRawBits() * (b.getY().getRawBits() - c.getY().getRawBits())
 				+ b.getX().getRawBits() * (c.getY().getRawBits() - a.getY().getRawBits())
 				+ c.getX().getRawBits() * (a.getY().getRawBits() - b.getY().getRawBits()));
 	Fixed res;

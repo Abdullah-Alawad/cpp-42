@@ -10,6 +10,11 @@ int main()
     Point B(10, 0);
     Point C(5, 10);
 
+    // 1. Very close to edge AB
+    testBsp(A, B, C, Point(5, 0.001f), "Tiny inside near AB");
+    testBsp(A, B, C, Point(5, -0.000001f), "Tiny outside below AB");
+
+    std::cout << "--------------------------------------" << std::endl;
     // 1. Strictly inside points
     testBsp(A, B, C, Point(5, 5), "Center inside");
     testBsp(A, B, C, Point(4, 3), "Closer to A inside");

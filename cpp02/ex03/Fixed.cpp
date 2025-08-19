@@ -93,29 +93,29 @@ bool Fixed::operator==(const Fixed &n) const
 
 Fixed Fixed::operator+(const Fixed &n) const
 {
-	Fixed res;
-	res.value = ((value) + (n.value)) >> fraction;
+	float val = this->toFloat() + n.toFloat();
+	Fixed res(val);
 	return (res);
 }
 		
 Fixed Fixed::operator-(const Fixed &n) const
 {
-	Fixed res;
-	res.value = ((value) - (n.value)) >> fraction;
+	float val = this->toFloat() - n.toFloat();
+	Fixed res(val);
 	return (res);
 }
 		
 Fixed Fixed::operator*(const Fixed &n) const
 {
-	Fixed res;
-	res.value = ((value) * (n.value)) >> fraction;
+	float val = this->toFloat() * n.toFloat();
+	Fixed res(val);
 	return (res);
 }
 		
 Fixed Fixed::operator/(const Fixed &n) const
 {
-	Fixed res;
-	res.value = ((value) / (n.value)) >> fraction;
+	float val = this->toFloat() / n.toFloat();
+	Fixed res(val);
 	return (res);
 }
 
