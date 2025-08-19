@@ -1,26 +1,26 @@
 #include "Point.hpp"
 
-float getArea(float x1, float y1, float x2, float y2, float x3, float y3)
+Fixed getArea(Point const a, Point const b, Point const c)
 {
-	return (std::fabs(x1*(y2 - y3) + x2*(y3 - y1) + x3*(y1 - y2)) / 2.0);
+	int val = std::abs(a.getX().getRawBits() * (b.getY().getRawBits() - c.getY().getRawBits())
+				+ b.getX().getRawBits() * (c.getY().getRawBits() - a.getY().getRawBits())
+				+ c.getX().getRawBits() * (a.getY().getRawBits() - b.getY().getRawBits()));
+	Fixed res;
+	res.setRawBits(val);
+	return (res);
 }
 
 bool bsp( Point const a, Point const b, Point const c, Point const point)
 {
-	float triangle = getArea(a.getX().toFloat(), a.getY().toFloat(),
-				b.getX().toFloat(), b.getY().toFloat(), c.getX().toFloat(), c.getY().toFloat());
+	Fixed triangle = getArea(a, b, c);
+	Fixed a1 = getArea(point, a, b);
+	Fixed a2 = getArea(point, b, c);
+	Fixed a3 = getArea(point, a, c);
 
-	float a1 = getArea(point.getX().toFloat(), point.getY().toFloat(),
-			a.getX().toFloat(), a.getY().toFloat(), b.getX().toFloat(), b.getY().toFloat());
-	
-	float a2 = getArea(point.getX().toFloat(), point.getY().toFloat(),
-			b.getX().toFloat(), b.getY().toFloat(), c.getX().toFloat(), c.getY().toFloat());
-
-	float a3 = getArea(point.getX().toFloat(), point.getY().toFloat(),
-				a.getX().toFloat(), a.getY().toFloat(), c.getX().toFloat(), c.getY().toFloat());
- 
-	const float EPS = 0.0000001;
-	if (a1 <= 0.0f || a2 <= 0.0f || a3 <= 0.0f)
-        return false;
-    return (a1 + a2 + a3) - triangle < EPS;
+	if (a1.getRawBits() <= 0 || a2.getRawBits() <= 0 || a3.getRawBits() <= 0)
+		return false;
+	if ((a1.getRawBits() + a2.getRawBits() + a3.getRawBits()) - triangle.getRawBits() == 0)
+		return true;
+	return false;
 }
+ 

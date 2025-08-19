@@ -14,6 +14,6 @@ int main( void ) {
 	std::cout << Fixed::max( a, b ) << std::endl;
 	std::cout << "----------------------------------" << std::endl;
 	if (c == d)
-		std::cout << "c and d are equal" << std::endl; 
+		std::cout << "c and d are equal" << std::endl;
 	return (0);
 }
