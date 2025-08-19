@@ -4,28 +4,22 @@ const int Fixed::fraction = 8;
 
 Fixed::Fixed()
 {
-	//std::cout << "Default constructor called" << std::endl;
 	value = 0;
 }
 
 Fixed::Fixed(const Fixed &copy)
 {
-	//std::cout << "Copy constructor called" << std::endl;
 	value = copy.value;
 }
 
 Fixed &Fixed::operator=(const Fixed &n)
 {
-	//std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &n)
 		this->value = n.value;
 	return (*this);
 }
 
-Fixed::~Fixed()
-{
-	//std::cout << "Destructer called" << std::endl;
-}
+Fixed::~Fixed() {}
 
 int Fixed::getRawBits(void)
 {
@@ -35,19 +29,16 @@ int Fixed::getRawBits(void)
 
 void Fixed::setRawBits(int const raw)
 {
-	//std::cout << "setRawBits member function called" << std::endl;
 	value = raw;
 }
 
 Fixed::Fixed(const int &num)
 {
-	//std::cout << "Int constructor called" << std::endl;
 	value = roundf(num * (1 << fraction));
 }
 
 Fixed::Fixed(const float &num)
 {
-	//std::cout << "float constructor called" << std::endl;
 	value = roundf(num * (1 << fraction));
 }
 
@@ -102,29 +93,29 @@ bool Fixed::operator==(const Fixed &n) const
 
 Fixed Fixed::operator+(const Fixed &n) const
 {
-	Fixed res;
-	res.value = ((value) + (n.value)) / (1 << fraction);
+	float val = this->toFloat() + n.toFloat();
+	Fixed res(val);
 	return (res);
 }
 		
 Fixed Fixed::operator-(const Fixed &n) const
 {
-	Fixed res;
-	res.value = ((value) - (n.value)) / (1 << fraction);
+	float val = this->toFloat() - n.toFloat();
+	Fixed res(val);
 	return (res);
 }
 		
 Fixed Fixed::operator*(const Fixed &n) const
 {
-	Fixed res;
-	res.value = ((value) * (n.value)) / (1 << fraction);
+	float val = this->toFloat() * n.toFloat();
+	Fixed res(val);
 	return (res);
 }
 		
 Fixed Fixed::operator/(const Fixed &n) const
 {
-	Fixed res;
-	res.value = ((value) / (n.value)) / (1 << fraction);
+	float val = this->toFloat() / n.toFloat();
+	Fixed res(val);
 	return (res);
 }
 
