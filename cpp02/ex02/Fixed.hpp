@@ -26,6 +26,7 @@ class Fixed
 		bool operator>=(const Fixed &n) const;
 		bool operator<=(const Fixed &n) const;
 		bool operator!=(const Fixed &n) const;
+		bool operator==(const Fixed &n) const;
 		Fixed operator+(const Fixed &n) const;
 		Fixed operator-(const Fixed &n) const;
 		Fixed operator*(const Fixed &n) const;

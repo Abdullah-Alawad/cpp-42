@@ -54,7 +54,6 @@ int Fixed::toInt(void) const
 	return (value / (1 << fraction));
 }
 
-
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
 {
 	out << fixed.toFloat();
@@ -86,6 +85,11 @@ bool Fixed::operator<=(const Fixed &n) const
 bool Fixed::operator!=(const Fixed &n) const
 {
 	return (value != n.value);
+}
+
+bool Fixed::operator==(const Fixed &n) const
+{
+	return (value == n.value);
 }
 
 Fixed Fixed::operator+(const Fixed &n) const
