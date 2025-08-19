@@ -95,31 +95,36 @@ bool Fixed::operator!=(const Fixed &n) const
 	return (value != n.value);
 }
 
+bool Fixed::operator==(const Fixed &n) const
+{
+	return (value == n.value);
+}
+
 Fixed Fixed::operator+(const Fixed &n) const
 {
 	Fixed res;
-	res.value = ((value) + (n.value)) >> fraction;
+	res.value = ((value) + (n.value)) / (1 << fraction);
 	return (res);
 }
 		
 Fixed Fixed::operator-(const Fixed &n) const
 {
 	Fixed res;
-	res.value = ((value) - (n.value)) >> fraction;
+	res.value = ((value) - (n.value)) / (1 << fraction);
 	return (res);
 }
 		
 Fixed Fixed::operator*(const Fixed &n) const
 {
 	Fixed res;
-	res.value = ((value) * (n.value)) >> fraction;
+	res.value = ((value) * (n.value)) / (1 << fraction);
 	return (res);
 }
 		
 Fixed Fixed::operator/(const Fixed &n) const
 {
 	Fixed res;
-	res.value = ((value) / (n.value)) >> fraction;
+	res.value = ((value) / (n.value)) / (1 << fraction);
 	return (res);
 }
 

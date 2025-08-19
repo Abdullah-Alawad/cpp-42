@@ -19,12 +19,8 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 	float a3 = getArea(point.getX().toFloat(), point.getY().toFloat(),
 				a.getX().toFloat(), a.getY().toFloat(), c.getX().toFloat(), c.getY().toFloat());
  
-	const float EPS = 1e-6;
-
-    // Reject if point is on an edge or outside
+	const float EPS = 0.0000001;
 	if (a1 <= 0.0f || a2 <= 0.0f || a3 <= 0.0f)
         return false;
-
-    // Check total area match with tolerance
-    return fabs((a1 + a2 + a3) - triangle) < EPS;
+    return (a1 + a2 + a3) - triangle < EPS;
 }
