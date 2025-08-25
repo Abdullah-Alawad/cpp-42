@@ -82,3 +82,29 @@ void ClapTrap::beRepaired(unsigned int amount)
 	std::cout << GREEN << "ClapTrap " << name << " repairs iself with "
 		<< amount << " hit points!\nhealth: " << RESET << hitPoints << std::endl;
 }
+
+void ClapTrap::setName(std::string name)
+{
+	this->name = name;
+}
+
+std::string ClapTrap::getName()
+{
+	return name;
+}
+		
+void ClapTrap::setHitPoints(int n)
+{
+	hitPoints = n;
+}
+		
+void ClapTrap::setEnergyPoints(int n)
+{
+	energyPoints = n;
+}
+		
+void ClapTrap::setAttackDamage(int n)
+{
+	attackDamage = n;
+}
+
