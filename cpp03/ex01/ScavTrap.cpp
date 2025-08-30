@@ -14,6 +14,15 @@ ScavTrap::ScavTrap(std::string &n): ClapTrap(n)
 	std::cout << CYAN << "ScavTrap constructor called for " << getName() << RESET << std::endl;
 }
 
+ScavTrap::ScavTrap(const ScavTrap &copy)
+{
+	setName(copy.getName());
+	setAttackDamage(copy.getAttackDamage());
+	setHitPoints(copy.getHitPoints());
+	setEnergyPoints(copy.getEnergyPoints());
+	std::cout << CYAN << "ScavTrap copy constructor called for " << getName() << RESET << std::endl;
+}
+
 ScavTrap::~ScavTrap()
 {
 	std::cout << CYAN << "ScavTrap " << getName() << " destructor called!" << RESET << std::endl;

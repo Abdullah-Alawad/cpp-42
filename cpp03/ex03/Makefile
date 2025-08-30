@@ -1,11 +1,11 @@
-NAME = fragTrap
+NAME = diamondTrap
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
-SRCS = main.cpp ClapTrap.cpp FragTrap.cpp
+SRCS = main.cpp ClapTrap.cpp FragTrap.cpp ScavTrap.cpp DiamondTrap.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -14,7 +14,7 @@ OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) ClapTrap.hpp FragTrap.hpp
+$(NAME): $(OBJS) ClapTrap.hpp FragTrap.hpp ScavTrap.hpp DiamondTrap.hpp
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean:

@@ -1,18 +1,21 @@
-#include "FragTrap.hpp"
-#include "ClapTrap.hpp"
+// #include "FragTrap.hpp"
+// #include "ClapTrap.hpp"
+
+#include "DiamondTrap.hpp"
 
 int main()
 {
 	std::string n = "Abdullah";
 	std::string y = "Yoda";
-	FragTrap a(n);
-	FragTrap b(y);
-	FragTrap c;
-	c = a;
+	DiamondTrap a(n);
+	DiamondTrap b(y);
+	DiamondTrap c(a);
+	//c = a;
 
 	 a.attack("Yoda");
-	 b.highFivesGuys();
-	 c.highFivesGuys();
+	 c.whoAmI();
+	 //b.highFivesGuys();
+	 //c.highFivesGuys();
 	// b.takeDamage(4);
 	// b.beRepaired(3);
 
