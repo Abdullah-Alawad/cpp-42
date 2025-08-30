@@ -12,6 +12,15 @@ FragTrap::FragTrap(std::string &n): ClapTrap(n)
 	setAttackDamage(30);
 	std::cout << MAGENTA << "FragTrap constructor called for " << getName() << RESET << std::endl;
 }
+
+FragTrap::FragTrap(const FragTrap &copy)
+{
+	setName(copy.getName());
+	setAttackDamage(copy.getAttackDamage());
+	setHitPoints(copy.getHitPoints());
+	setEnergyPoints(copy.getEnergyPoints());
+	std::cout << CYAN << "FragTrap copy constructor called for " << getName() << RESET << std::endl;
+}
 		
 FragTrap &FragTrap::operator=(FragTrap &obj)
 {
