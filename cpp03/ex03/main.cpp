@@ -1,18 +1,18 @@
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 #include "ClapTrap.hpp"
 
 int main()
 {
 	std::string n = "Abdullah";
 	std::string y = "Yoda";
-	ScavTrap a(n);
-	ScavTrap b(y);
-	ScavTrap c;
+	FragTrap a(n);
+	FragTrap b(y);
+	FragTrap c;
 	c = a;
 
 	 a.attack("Yoda");
-	 b.guardGate();
-	 c.guardGate();
+	 b.highFivesGuys();
+	 c.highFivesGuys();
 	// b.takeDamage(4);
 	// b.beRepaired(3);
 
