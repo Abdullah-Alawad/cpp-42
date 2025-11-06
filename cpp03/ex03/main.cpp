@@ -10,10 +10,11 @@ int main()
 	DiamondTrap a(n);
 	DiamondTrap b(y);
 	DiamondTrap c(a);
-	//c = a;
+	// c = a;
 
 	 a.attack("Yoda");
 	 c.whoAmI();
+	std::cout << a.getHitPoints() << "  " << a.getEnergyPoints() <<  "  " << a.getAttackDamage() << std::endl;
 	 //b.highFivesGuys();
 	 //c.highFivesGuys();
 	// b.takeDamage(4);

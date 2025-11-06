@@ -13,6 +13,7 @@ int main()
 	 a.attack("Yoda");
 	 b.guardGate();
 	 c.guardGate();
+	 std::cout << a.getAttackDamage() << "  " << a.getEnergyPoints() <<  "  " << a.getHitPoints() << std::endl;
 	// b.takeDamage(4);
 	// b.beRepaired(3);
 
