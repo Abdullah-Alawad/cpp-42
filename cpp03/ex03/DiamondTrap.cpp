@@ -6,7 +6,7 @@ DiamondTrap::DiamondTrap(): ClapTrap()
     std::cout << MAGENTA << "DiamondTrap constructor called for " << name << RESET << std::endl;
 }
 		
-DiamondTrap::DiamondTrap(std::string &n): ClapTrap(n), ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap(std::string &n): ClapTrap(n), ScavTrap(n), FragTrap(n)
 {
     std::string clapName = n + "_clap_name";
     name = n;
