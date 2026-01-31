@@ -3,7 +3,7 @@
 
 # include "Bureaucrat.hpp"
 
-class Bureaucrat; // Forward declaration
+class Bureaucrat;
 
 class AForm
 {
