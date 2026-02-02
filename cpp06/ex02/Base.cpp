@@ -8,7 +8,7 @@ Base::~Base() {}
 Base * generate(void)
 {
 	int x;
-	x = (rand() % 100) + 7;
+	x = (rand() % 100) + 5;
 
 	if (x < 33)
 		return (new A);
