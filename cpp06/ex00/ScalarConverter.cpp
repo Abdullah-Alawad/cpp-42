@@ -45,8 +45,8 @@ bool check_arg(const std::string &literal)
         if (ispunct(literal[i]))
         {
             if (literal[i] == '+' || literal[i] == '-' || literal[i] == '.' || literal[i] == 'f' || '\'')
-            {   
-                i++; 
+            {
+                i++;
                 continue;
             }
             return (true);
