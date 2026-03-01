@@ -44,7 +44,7 @@ bool check_arg(const std::string &literal)
             return (true);
         if (ispunct(literal[i]))
         {
-            if (literal[i] == '+' || literal[i] == '-' || literal[i] == '.' || literal[i] == 'f' || '\'')
+            if (literal[i] == '+' || literal[i] == '-' || literal[i] == '.' || literal[i] == 'f' || literal[i] =='\'')
             {
                 i++;
                 continue;
@@ -193,7 +193,7 @@ void    convertInteger(const std::string &literal)
     int n = atoi(literal.c_str());
     char c = static_cast<char>(n);
     float f = static_cast<float>(n);
-    float d = static_cast<double>(n);
+    double d = static_cast<double>(n);
 
     if (n < 0 || n > 127)
         std::cout << "char: impossible" << std::endl;
